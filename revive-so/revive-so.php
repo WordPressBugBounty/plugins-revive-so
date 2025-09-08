@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Revive.so
  * Description: Revive.so is the ultimate WordPress plugin for content rejuvenation. Republish and recirculate evergreen posts with a simple click. This will boost your content's visibility, engagement, and SEO rankings. Don't let your valuable content fade into obscurity.
- * Version: 2.0.6
+ * Version: 2.0.7
  * Author: Revive.so
  * Author URI: https://revive.so/
  * Requires at least: 5.4
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Reviveso' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '2.0.6';
+		public $version = '2.0.7';
 
 		/**
 		 * Minimum version of WordPress required to run Reviveso.

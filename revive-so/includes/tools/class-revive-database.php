@@ -24,9 +24,6 @@ class REVIVESO_Database {
 		add_action( 'admin_post_reviveso_import_settings', array( $this, 'import_settings' ) );
 		add_action( 'admin_post_reviveso_remove_data', array( $this, 'remove_data' ) );
 		add_action( 'admin_post_reviveso_remove_meta', array( $this, 'run_cleanup' ) );
-		add_action( 'admin_post_reviveso_deschedule_posts', array( $this, 'deschedule_posts' ) );
-		add_action( 'admin_post_reviveso_regenerate_interval', array( $this, 'regenerate_interval' ) );
-		add_action( 'admin_post_reviveso_regenerate_schedule', array( $this, 'regenerate_schedule' ) );
 		add_action( 'admin_post_reviveso_recreate_tables', array( $this, 'maybe_recreate_actionscheduler_tables' ) );
 		$this->action( 'reviveso_deschedule_posts_task', 'deschedule_posts_task' );
 		$this->action( 'action_scheduler_canceled_action', 'action_cancelled' );
@@ -272,42 +269,6 @@ class REVIVESO_Database {
 	}
 
 	/**
-	 * Process regenerate global republish interval
-	 */
-	public function regenerate_interval() {
-		// remove last data
-		\delete_option( 'reviveso_next_scheduled_timestamp' );
-
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'page' => 'reviveso',
-					'tab'  => 'tools',
-				),
-				admin_url( 'admin.php' )
-			)
-		);
-		exit;
-	}
-
-	/**
-	 * Process regenerate republish schedules
-	 */
-	public function regenerate_schedule() {
-		$this->do_action( 'process_regenerate_schedule' );
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'page' => 'reviveso',
-					'tab'  => 'tools',
-				),
-				admin_url( 'admin.php' )
-			)
-		);
-		exit;
-	}
-
-	/**
 	 * Post meta cleanup.
 	 */
 	public function run_cleanup() {
@@ -350,43 +311,6 @@ class REVIVESO_Database {
 				)
 			);
 		}
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'page' => 'reviveso',
-					'tab'  => 'tools',
-				),
-				admin_url( 'admin.php' )
-			)
-		);
-		exit;
-	}
-
-	/**
-	 * Remove actions.
-	 */
-	public function deschedule_posts() {
-		$post_types = $this->get_post_types( true );
-
-		$args = $this->do_filter(
-			'deschedule_posts_args',
-			array(
-				'post_type'   => $post_types,
-				'numberposts' => - 1,
-				'post_status' => array( 'publish', 'future', 'private' ),
-				'fields'      => 'ids',
-				'meta_query'  => array(
-					array(
-						'key'     => '_reviveso_original_pub_date',
-						'compare' => 'EXISTS',
-					),
-				),
-			)
-		);
-
-		$post_ids = $this->get_posts( $args );
-		$this->schedule_batch_actions( $post_ids, 'reviveso_deschedule_posts_task' );
-
 		wp_safe_redirect(
 			add_query_arg(
 				array(

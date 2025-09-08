@@ -4,7 +4,7 @@ Tags: republish posts, republish, posts
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GNU General Public License v3.0 or later
 
 == Description == 
@@ -12,6 +12,9 @@ Revive.so is the ultimate WordPress plugin for content rejuvenation. Republish a
 
 
 == Changelog ==
+= 2.0.7 - 08.09.2025 =
+* Fixed: Removed unused code.
+
 = 2.0.6 - 25.07.2025 =
 * Fixed: Extension check would trigger an error in some cases.
 
