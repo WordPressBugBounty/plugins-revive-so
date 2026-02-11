@@ -7,7 +7,7 @@
  * Author: Revive.so
  * Author URI: https://revive.so/
  * Requires at least: 5.4
- * Tested up to: 6.8
+ * Tested up to: 6.9
  * Text Domain: revive-so
  *
  * License: GPL v3

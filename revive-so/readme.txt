@@ -2,7 +2,7 @@
 Contributors: wpchill, indexsy
 Tags: republish posts, republish, posts
 Requires at least: 5.3
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
 Stable tag: 2.0.7
 License: GNU General Public License v3.0 or later
@@ -10,6 +10,10 @@ License: GNU General Public License v3.0 or later
 == Description == 
 Revive.so is the ultimate WordPress plugin for content rejuvenation. Republish and recirculate evergreen posts with a simple click. This will boost your content's visibility, engagement, and SEO rankings. Don't let your valuable content fade into obscurity.
 
+== Frequently Asked Questions ==
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Revive.so plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/9e5fc60e-7441-42b9-b367-0b72e8af5a55). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin."
 
 == Changelog ==
 = 2.0.7 - 08.09.2025 =
